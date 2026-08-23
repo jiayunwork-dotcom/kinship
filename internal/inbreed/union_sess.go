@@ -18,7 +18,6 @@ func newUnionSession() *UnionSession {
 }
 
 func (s *UnionSession) Commit(unions []Union) ([]Union, error) {
-	s.cancel()
 	if err := s.ctx.Err(); err != nil {
 		return nil, fmt.Errorf("union session closed: %w", err)
 	}
