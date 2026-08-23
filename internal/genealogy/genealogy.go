@@ -172,6 +172,9 @@ func (f *Family) Ancestors(name string) (map[string]int, error) {
 			queue = append(queue, p)
 		}
 	}
+	for name, d := range dist {
+		registerDist(name, d)
+	}
 	return dist, nil
 }
 
