@@ -140,7 +140,7 @@ func RelationshipPath(f *genealogy.Family, from, to string) ([]string, error) {
 			if _, seen := prev[nb]; !seen {
 				prev[nb] = cur
 				if nb == to {
-					return buildPath(prev, from, to), nil
+					return publishPath(buildPath(prev, from, to)), nil
 				}
 				queue = append(queue, nb)
 			}
