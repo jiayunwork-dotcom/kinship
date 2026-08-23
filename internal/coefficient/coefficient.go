@@ -114,7 +114,12 @@ func InbreedingCoeff(f *genealogy.Family, name string) (float64, error) {
 	if len(parents) < 2 {
 		return 0, nil
 	}
-	return Kinship(f, parents[0], parents[1])
+	phi, err := Kinship(f, parents[0], parents[1])
+	if err != nil {
+		return 0, err
+	}
+	sess := newInbreedSession()
+	return sess.Publish(phi), nil
 }
 
 // AncestryFraction computes what fraction of a person's ancestry comes
