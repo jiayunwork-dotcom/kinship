@@ -43,7 +43,7 @@ func Relatedness(f *genealogy.Family, a, b string) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	return 2 * phi, nil
+	return publishRelatedness(2 * phi), nil
 }
 
 // allPaths finds all paths through common ancestors between a and b.
