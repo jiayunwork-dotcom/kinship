@@ -27,7 +27,7 @@ func Describe(f *genealogy.Family, from, to string) (string, error) {
 		return "", err
 	}
 	if d, ok := ancFrom[to]; ok {
-		return ancestorTerm(f, to, d), nil
+		return AncestorTerm(f, to, d), nil
 	}
 	ancTo, err := f.Ancestors(to)
 	if err != nil {
@@ -66,6 +66,12 @@ func sexOf(f *genealogy.Family, name string) string {
 		return p.Sex
 	}
 	return "F"
+}
+
+// AncestorTerm names an ancestor `d` generations up and publishes the
+// term through the report ledger.
+func AncestorTerm(f *genealogy.Family, name string, d int) string {
+	return publishTerm(ancestorTerm(f, name, d))
 }
 
 // ancestorTerm names an ancestor `d` generations up: mother,
