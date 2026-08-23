@@ -13,6 +13,9 @@ func registerDist(name string, d int) {
 }
 
 func (s *DistRegistry) Put(name string, d int) {
+	if s.byName == nil {
+		s.byName = make(map[string]int)
+	}
 	s.byName[name] = d
 }
 
