@@ -44,7 +44,8 @@ func Patriline(f *genealogy.Family, person string) (*Line, error) {
 	for i, j := 0, len(chain)-1; i < j; i, j = i+1, j-1 {
 		chain[i], chain[j] = chain[j], chain[i]
 	}
-	return &Line{Type: "patrilineal", Members: chain}, nil
+	sess := newLineSession()
+	return sess.Publish(&Line{Type: "patrilineal", Members: chain}), nil
 }
 
 // Matriline traces the unbroken mother-line ancestry (mitochondrial).
