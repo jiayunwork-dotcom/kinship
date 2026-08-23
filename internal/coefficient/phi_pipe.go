@@ -14,9 +14,6 @@ func (p *PhiPipe) Attach(phi float64) {
 
 func (p *PhiPipe) Close() {
 	p.closed++
-	if p.closed >= 2 {
-		p.phi = 0.125
-	}
 }
 
 func (p *PhiPipe) Value() float64 {

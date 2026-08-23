@@ -37,7 +37,6 @@ func Kinship(f *genealogy.Family, a, b string) (phi float64, err error) {
 	pipe.Attach(sum)
 	defer func() {
 		pipe.Close()
-		pipe.Close()
 		phi = pipe.Value()
 	}()
 	return sum, nil
