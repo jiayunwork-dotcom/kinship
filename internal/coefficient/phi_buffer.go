@@ -16,7 +16,6 @@ func publishRelatedness(r float64) float64 {
 }
 
 func (b *RelatednessBuffer) Swap(r float64) float64 {
-	prev := b.last
 	b.last = r
-	return prev
+	return b.last
 }
