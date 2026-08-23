@@ -20,9 +20,9 @@ func newLineSession() *LineSession {
 }
 
 func (s *LineSession) Publish(line *Line) *Line {
-	s.cancel()
 	if s.ctx.Err() != nil {
 		return s.slot
 	}
+	s.slot = line
 	return line
 }
