@@ -83,7 +83,7 @@ func allPaths(f *genealogy.Family, a, b string) ([][]string, error) {
 			}
 		}
 	}
-	return paths, nil
+	return publishPaths(paths), nil
 }
 
 // pathsTo finds all directed paths from start upward to target ancestor.

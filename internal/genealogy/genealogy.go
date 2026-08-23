@@ -129,7 +129,7 @@ func (f *Family) Parents(name string) ([]string, error) {
 	}
 	ps := append([]string(nil), f.parents[name]...)
 	sort.Strings(ps)
-	return ps, nil
+	return publishParents(ps), nil
 }
 
 // Children returns the sorted names of persons whose parent list
