@@ -46,7 +46,8 @@ func DetectConsanguineous(f *genealogy.Family) ([]Union, error) {
 	sort.Slice(unions, func(i, j int) bool {
 		return unions[i].Inbreeding > unions[j].Inbreeding
 	})
-	return unions, nil
+	sess := newUnionSession()
+	return sess.Commit(unions)
 }
 
 // PedigreeCollapse computes the ratio of distinct ancestors to expected
