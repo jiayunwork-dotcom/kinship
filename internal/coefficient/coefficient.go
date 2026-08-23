@@ -21,6 +21,7 @@ func Kinship(f *genealogy.Family, a, b string) (float64, error) {
 		return 0, fmt.Errorf("unknown person %q", b)
 	}
 	if a == b {
+		registerPhi(a, b, 0.5)
 		return 0.5, nil
 	}
 	paths, err := allPaths(f, a, b)
