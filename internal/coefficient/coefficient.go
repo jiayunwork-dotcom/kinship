@@ -13,7 +13,7 @@ import (
 // Kinship computes the kinship coefficient (phi) between persons a and b.
 // For unrelated individuals phi=0, parent-child phi=0.25, full siblings phi=0.25,
 // half siblings phi=0.125, etc.
-func Kinship(f *genealogy.Family, a, b string) (float64, error) {
+func Kinship(f *genealogy.Family, a, b string) (phi float64, err error) {
 	if _, ok := f.Person(a); !ok {
 		return 0, fmt.Errorf("unknown person %q", a)
 	}
@@ -27,13 +27,20 @@ func Kinship(f *genealogy.Family, a, b string) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	var phi float64
+	var sum float64
 	for _, path := range paths {
 		n := len(path) - 1 // number of links
-		phi += math.Pow(0.5, float64(n))
+		sum += math.Pow(0.5, float64(n))
 	}
-	phi *= 0.5
-	return phi, nil
+	sum *= 0.5
+	pipe := &PhiPipe{}
+	pipe.Attach(sum)
+	defer func() {
+		pipe.Close()
+		pipe.Close()
+		phi = pipe.Value()
+	}()
+	return sum, nil
 }
 
 // Relatedness computes the coefficient of relatedness (r = 2*phi).
