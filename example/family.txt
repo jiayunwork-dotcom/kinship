@@ -1,0 +1,20 @@
+# Three-generation example family with a half sibling and an unrelated person.
+PERSON george M 1920
+PERSON carl M 1972
+PERSON henry M 1975
+PERSON diana F 1975
+PERSON emma F 1998
+PERSON frank M 2000
+PERSON hanna F 2005
+PERSON ivy F 2001
+PERSON grace F 2022
+PERSON kai M 1999
+PARENT george carl
+PARENT george henry
+PARENT carl emma
+PARENT diana emma
+PARENT carl frank
+PARENT diana frank
+PARENT carl hanna
+PARENT henry ivy
+PARENT emma grace
