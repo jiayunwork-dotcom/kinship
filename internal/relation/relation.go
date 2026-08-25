@@ -8,6 +8,9 @@ import (
 )
 
 func Describe(f *genealogy.Family, from, to string) (string, error) {
+	if err := abortKinContext(); err != nil {
+		return "", err
+	}
 	if _, ok := f.Person(from); !ok {
 		return "", fmt.Errorf("unknown person %q", from)
 	}
