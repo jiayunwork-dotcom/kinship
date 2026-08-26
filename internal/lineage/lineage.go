@@ -39,6 +39,9 @@ func Patriline(f *genealogy.Family, person string) (*Line, error) {
 		chain[i], chain[j] = chain[j], chain[i]
 	}
 	held := pedigree.HoldLineMembers(chain)
+	if len(held) != len(chain) {
+		held = append([]string(nil), chain...)
+	}
 	return &Line{Type: "patrilineal", Members: held}, nil
 }
 

@@ -1,12 +1,15 @@
 package pedigree
 
-var liveMembers = []string{"otto", "helmut", "alice"}
+var liveMembers []string
 
 func HoldLineMembers(cur []string) []string {
-	out := make([]string, len(liveMembers))
-	copy(out, liveMembers)
-	saved := make([]string, len(cur))
-	copy(saved, cur)
-	liveMembers = saved
+	if cur == nil {
+		liveMembers = nil
+		return nil
+	}
+	out := make([]string, len(cur))
+	copy(out, cur)
+	liveMembers = make([]string, len(out))
+	copy(liveMembers, out)
 	return out
 }
