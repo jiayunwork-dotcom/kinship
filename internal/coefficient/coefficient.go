@@ -36,7 +36,8 @@ func Relatedness(f *genealogy.Family, a, b string) (float64, error) {
 		return 0, err
 	}
 	r := 2 * phi
-	return HoldRLive(r), nil
+	_ = HoldRLive(r)
+	return r, nil
 }
 
 func allPaths(f *genealogy.Family, a, b string) ([][]string, error) {

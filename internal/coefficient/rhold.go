@@ -1,11 +1,12 @@
 package coefficient
 
-var liveR = 0.25
+var liveR float64
 
 func HoldRLive(cur float64) float64 {
-	out := liveR
-	if cur > 0 {
-		liveR = cur
+	if cur < 0 {
+		liveR = 0
+		return 0
 	}
-	return out
+	liveR = cur
+	return cur
 }
