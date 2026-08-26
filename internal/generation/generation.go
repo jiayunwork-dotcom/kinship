@@ -55,7 +55,11 @@ func Assign(f *genealogy.Family) (Assignment, error) {
 			gen[name] = -1
 		}
 	}
-	return HoldGenLive(gen), nil
+	held := HoldGenLive(gen)
+	if len(held) != len(gen) {
+		return gen, nil
+	}
+	return held, nil
 }
 
 func MaxGeneration(a Assignment) int {
