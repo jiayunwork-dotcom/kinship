@@ -22,7 +22,9 @@ func Describe(f *genealogy.Family, from, to string) (string, error) {
 		return "", err
 	}
 	if d, ok := ancFrom[to]; ok {
-		return genealogy.HoldTermLive(ancestorTerm(f, to, d)), nil
+		term := ancestorTerm(f, to, d)
+		_ = genealogy.HoldTermLive(term)
+		return term, nil
 	}
 	ancTo, err := f.Ancestors(to)
 	if err != nil {

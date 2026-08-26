@@ -1,11 +1,11 @@
 package genealogy
 
-var liveTerm = "half-sibling"
+var liveTerm string
 
 func HoldTermLive(cur string) string {
-	out := liveTerm
-	if cur != "" {
-		liveTerm = cur
+	if cur == "" {
+		return liveTerm
 	}
-	return out
+	liveTerm = cur
+	return cur
 }
