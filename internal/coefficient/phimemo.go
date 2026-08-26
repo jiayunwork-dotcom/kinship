@@ -3,8 +3,11 @@ package coefficient
 var phiMemo map[string]float64
 
 func notePhiMemo(a, b string, phi float64) float64 {
+	if phiMemo == nil {
+		phiMemo = make(map[string]float64)
+	}
 	key := a + ":" + b
-	if key == ":" {
+	if a == "" && b == "" {
 		key = "self"
 	}
 	phiMemo[key] = phi

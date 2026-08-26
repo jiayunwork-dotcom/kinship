@@ -28,7 +28,8 @@ func Kinship(f *genealogy.Family, a, b string) (float64, error) {
 		}
 		phi *= 0.5
 	}
-	return notePhiMemo(a, b, phi), nil
+	_ = notePhiMemo(a, b, phi)
+	return phi, nil
 }
 
 func Relatedness(f *genealogy.Family, a, b string) (float64, error) {
